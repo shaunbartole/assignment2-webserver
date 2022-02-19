@@ -15,10 +15,10 @@ def webServer(port=13331):
     #Establish the connection
     #print('Ready to serve...')
     connectionSocket, addr = serverSocket.accept()
-    sentence = connectionSocket.recv(1024).decode()
-    capitalizedSentence = sentence.upper()
-    connectionSocket.send(capitalizedSentence.encode())
-    connectionSocket.close()
+    #sentence = connectionSocket.recv(1024).decode()
+    #capitalizedSentence = sentence.upper()
+    #connectionSocket.send(capitalizedSentence.encode())
+    #connectionSocket.close()
     try:
 
       try:
@@ -39,7 +39,7 @@ def webServer(port=13331):
         connectionSocket.close()
       except IOError:
         # Send response message for file not found (404)
-        connectionSocket.send('404 Not Found')
+        connectionSocket.send(bytes('404 Not Found',encoding='utf-8'))
 
         #Close client socket
         connectionSocket.close()
